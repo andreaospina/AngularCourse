@@ -53,6 +53,8 @@ switch (num)
 
 
 // Loops
+// Break; Finish the loop.
+// Continue; Goes to the next iteration.
 for (int i = 0; i < 7; i++)
 {
     Console.WriteLine($"iteration number: {i} -  {num} with the value {myValue}");

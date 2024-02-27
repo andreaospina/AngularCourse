@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EjemploConsola
 {
-    public class DataStructures
+    public class MatrixAndDictionary
     {
         // One dimension Data structures...
         // Array -> Fixed lenght. Example: int[] MyIntArray = new int[3]();
@@ -38,14 +38,6 @@ namespace EjemploConsola
         string[] denomincaciones = new string[6] { "5000", "10000", "20000", "50000", "100000", "500" };
         public void Test()
         {
-            // Array of ints
-            int[] contadoresDenominaciones = new int[denomincaciones.Length]; // Create an array of ints based on the lenght of another array.
-
-            // How to itearate arrays
-            for (int i = 0; i < denomincaciones.Length; i++)
-            {
-                contadoresDenominaciones[i]++;
-            }
 
             // Array of arrays 
             // [

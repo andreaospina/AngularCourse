@@ -1,0 +1,7 @@
+pre code {
+    background-color: #dcdcdc;
+    border: 1px solid #c4bdbd;
+    display: inline-block;
+    padding: 20px;
+    min-width: 50%;
+  }
