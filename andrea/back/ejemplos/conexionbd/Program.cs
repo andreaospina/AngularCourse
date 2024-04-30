@@ -2,5 +2,5 @@
 using conexionbd.Services;
 
 var Rol = new rolService();
-Rol.crearRol();
+//Rol.crearRol();
 Rol.leerRol();

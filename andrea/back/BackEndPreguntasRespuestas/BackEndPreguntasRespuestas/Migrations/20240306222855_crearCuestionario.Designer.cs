@@ -4,6 +4,7 @@ using BackEndPreguntasRespuestas.Persistence.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BackEndPreguntasRespuestas.Migrations
 {
     [DbContext(typeof(AplicationDbContext))]
-    partial class AplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240306222855_crearCuestionario")]
+    partial class crearCuestionario
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -101,57 +103,6 @@ namespace BackEndPreguntasRespuestas.Migrations
                     b.ToTable("Respuesta");
                 });
 
-            modelBuilder.Entity("BackEndPreguntasRespuestas.Domain.Models.RespuestaCuestionario", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<bool>("Activo")
-                        .HasColumnType("bit");
-
-                    b.Property<int>("CuestionarioId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("Fecha")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("NombreParticipante")
-                        .IsRequired()
-                        .HasColumnType("varchar(100)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CuestionarioId");
-
-                    b.ToTable("RespuestaCuestionario");
-                });
-
-            modelBuilder.Entity("BackEndPreguntasRespuestas.Domain.Models.RespuestaCuestionarioDetalle", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<int>("RespuestaCuestionarioId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("RespuestaId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("RespuestaCuestionarioId");
-
-                    b.HasIndex("RespuestaId");
-
-                    b.ToTable("RespuestaCuestionarioDetalle");
-                });
-
             modelBuilder.Entity("BackEndPreguntasRespuestas.Domain.Models.Usuario", b =>
                 {
                     b.Property<int>("Id")
@@ -187,7 +138,7 @@ namespace BackEndPreguntasRespuestas.Migrations
             modelBuilder.Entity("BackEndPreguntasRespuestas.Domain.Models.Pregunta", b =>
                 {
                     b.HasOne("BackEndPreguntasRespuestas.Domain.Models.Cuestionario", "Cuestionario")
-                        .WithMany("listPreguntas")
+                        .WithMany("Preguntas")
                         .HasForeignKey("CuestionarioId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -198,7 +149,7 @@ namespace BackEndPreguntasRespuestas.Migrations
             modelBuilder.Entity("BackEndPreguntasRespuestas.Domain.Models.Respuesta", b =>
                 {
                     b.HasOne("BackEndPreguntasRespuestas.Domain.Models.Pregunta", "Pregunta")
-                        .WithMany("listRespuesta")
+                        .WithMany("Respuestas")
                         .HasForeignKey("PreguntaId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -206,49 +157,14 @@ namespace BackEndPreguntasRespuestas.Migrations
                     b.Navigation("Pregunta");
                 });
 
-            modelBuilder.Entity("BackEndPreguntasRespuestas.Domain.Models.RespuestaCuestionario", b =>
-                {
-                    b.HasOne("BackEndPreguntasRespuestas.Domain.Models.Cuestionario", "Cuestionario")
-                        .WithMany()
-                        .HasForeignKey("CuestionarioId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Cuestionario");
-                });
-
-            modelBuilder.Entity("BackEndPreguntasRespuestas.Domain.Models.RespuestaCuestionarioDetalle", b =>
-                {
-                    b.HasOne("BackEndPreguntasRespuestas.Domain.Models.RespuestaCuestionario", "RespuestaCuestionario")
-                        .WithMany("ListRtaCuestionarioDetalle")
-                        .HasForeignKey("RespuestaCuestionarioId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("BackEndPreguntasRespuestas.Domain.Models.Respuesta", "Respuesta")
-                        .WithMany()
-                        .HasForeignKey("RespuestaId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Respuesta");
-
-                    b.Navigation("RespuestaCuestionario");
-                });
-
             modelBuilder.Entity("BackEndPreguntasRespuestas.Domain.Models.Cuestionario", b =>
                 {
-                    b.Navigation("listPreguntas");
+                    b.Navigation("Preguntas");
                 });
 
             modelBuilder.Entity("BackEndPreguntasRespuestas.Domain.Models.Pregunta", b =>
                 {
-                    b.Navigation("listRespuesta");
-                });
-
-            modelBuilder.Entity("BackEndPreguntasRespuestas.Domain.Models.RespuestaCuestionario", b =>
-                {
-                    b.Navigation("ListRtaCuestionarioDetalle");
+                    b.Navigation("Respuestas");
                 });
 #pragma warning restore 612, 618
         }

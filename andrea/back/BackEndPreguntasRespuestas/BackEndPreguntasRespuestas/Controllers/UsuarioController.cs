@@ -22,7 +22,7 @@ namespace BackEndPreguntasRespuestas.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> GuardarUsuario([FromBody]Usuario usuario)
+        public async Task<IActionResult> GuardarUsuario([FromBody]Usuario usuario)
         {
             try
             {
@@ -50,10 +50,11 @@ namespace BackEndPreguntasRespuestas.Controllers
         [Route("CambiarPassword")]
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [HttpPut]
-        public async Task<ActionResult> CambiarPassword([FromBody] CambiarPasswordDTO cambiarPassword)
+        public async Task<IActionResult> CambiarPassword([FromBody] CambiarPasswordDTO cambiarPassword)
         {
             try
             {
+                //obtener el id del usuario del token
                 var identity = HttpContext.User.Identity as ClaimsIdentity;
                 int idUsuario = JwtConfigurator.GetTokenIdUsuario(identity);
 

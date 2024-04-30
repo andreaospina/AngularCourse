@@ -5,7 +5,9 @@ VisualStudioVersion = 17.2.32519.379
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "estudioJunior", "estudioJunior\estudioJunior.csproj", "{88139056-E58E-4997-8F94-19CC4B89AA72}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "conexionbd", "conexionbd\conexionbd.csproj", "{4893D27C-652E-4CC3-A7FA-47BD3EAB4F7E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "conexionbd", "conexionbd\conexionbd.csproj", "{4893D27C-652E-4CC3-A7FA-47BD3EAB4F7E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ejerciciosApi", "ejerciciosApi\ejerciciosApi.csproj", "{8DD35C85-8853-4B8E-8AE6-16DC96C05F3C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{4893D27C-652E-4CC3-A7FA-47BD3EAB4F7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4893D27C-652E-4CC3-A7FA-47BD3EAB4F7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4893D27C-652E-4CC3-A7FA-47BD3EAB4F7E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8DD35C85-8853-4B8E-8AE6-16DC96C05F3C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DD35C85-8853-4B8E-8AE6-16DC96C05F3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8DD35C85-8853-4B8E-8AE6-16DC96C05F3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8DD35C85-8853-4B8E-8AE6-16DC96C05F3C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

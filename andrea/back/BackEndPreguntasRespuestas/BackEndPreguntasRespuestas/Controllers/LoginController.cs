@@ -21,7 +21,7 @@ namespace BackEndPreguntasRespuestas.Controllers
 
         [HttpPost]
 
-        public async Task<ActionResult> ValidateUser(Usuario usuario)
+        public async Task<IActionResult> ValidateUser(Usuario usuario)
         {
             try
             {

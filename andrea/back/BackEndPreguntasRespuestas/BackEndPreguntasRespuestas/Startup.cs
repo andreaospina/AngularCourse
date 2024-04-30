@@ -1,4 +1,5 @@
-﻿using BackEndPreguntasRespuestas.Domain.IRepositories;
+﻿using AutoMapper;
+using BackEndPreguntasRespuestas.Domain.IRepositories;
 using BackEndPreguntasRespuestas.Domain.IServices;
 using BackEndPreguntasRespuestas.Persistence.Context;
 using BackEndPreguntasRespuestas.Persistence.Repositories;
@@ -6,6 +7,7 @@ using BackEndPreguntasRespuestas.Service;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 using System.Text;
 
 namespace BackEndPreguntasRespuestas
@@ -27,10 +29,14 @@ namespace BackEndPreguntasRespuestas
             //service
             services.AddScoped<IUsuarioService, UsuarioService>();
             services.AddScoped<ILoginService, LoginService>();
+            services.AddScoped<ICuestionarioService, CuestionarioService>();
+            services.AddScoped<IRespuestaCuestionarioService, RespuestaCuestionarioService>();
 
             //repository
             services.AddScoped<IUsuarioRepository, UsuarioRepository>();
             services.AddScoped<ILoginRepository, LoginRepository>();
+            services.AddScoped<ICuestionarioRespository, CuestionarioRepository>();
+            services.AddScoped<IRespuestaCuestionarioRepository, RespuestaCuestionarioRepository>();
 
             // Cors
             services.AddCors(options => options.AddPolicy("AllowWebApp",builder => 
@@ -50,10 +56,17 @@ namespace BackEndPreguntasRespuestas
                     ClockSkew = TimeSpan.Zero
                 });
 
-            services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson(options => options.SerializerSettings.ReferenceLoopHandling
+                                                        = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             services.AddEndpointsApiExplorer();
-            services.AddSwaggerGen();
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "PreguntasRespuestas", Version = "v1" });
+            });
+
+            services.AddAutoMapper(typeof(Startup));
         } 
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
